@@ -21,7 +21,7 @@ layout:decorator="Template1">
       	<form th:action="@{/consulterCompte}" method="get">
       		<div>
       			<label>Code Cpte : </label>
-      			<input type="text" name="codeCompte" th:value="${codeCompte}"/>
+      			<input type="text"  class="form-control" name="codeCompte" th:value="${codeCompte}"/>
       			<button type="submit" class="btn btn-primary">Chercher</button>
       		</div>
       		
