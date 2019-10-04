@@ -10,17 +10,17 @@ import javax.persistence.OneToOne;
 @Entity
 public class Groupes {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private String libelle;
    @OneToOne(mappedBy="groupes")
    public Emploie emploie;
    @ManyToOne
 	@JoinColumn(name="FIL_NAME")
 	private Filiere filiere;
-public int getId() {
+public Long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getLibelle() {

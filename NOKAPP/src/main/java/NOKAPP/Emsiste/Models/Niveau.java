@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Niveau {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private String libelle;
    @OneToOne
    @JoinColumn(name="C_PROF")
@@ -20,10 +20,10 @@ public class Niveau {
    private Etudiant etudiant;
    @OneToMany(mappedBy="niveau")
    private Collection<Filiere> filiere;
-public int getId() {
+public Long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getLibelle() {

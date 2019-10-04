@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Examens {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private String typeExamen;
    private String matiereExamen;
    @OneToOne
@@ -28,11 +28,11 @@ public Examens(String typeExamen, String matiereExamen, Professeur professeur, M
 	this.matiere = matiere;
 }
 
-public int getId() {
+public Long getId() {
 	return id;
 }
 
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 

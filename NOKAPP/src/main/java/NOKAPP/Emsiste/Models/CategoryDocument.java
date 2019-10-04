@@ -9,15 +9,15 @@ import javax.persistence.OneToOne;
 @Entity
 public class CategoryDocument {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private String libelle;
    	@OneToOne
 	@JoinColumn(name="CODE_DOC")
    private Document DOCUMENT;
-public int getId() {
+public Long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getLibelle() {

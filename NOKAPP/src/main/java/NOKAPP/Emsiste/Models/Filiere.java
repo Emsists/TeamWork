@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Filiere {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private String libelle;
    @OneToMany(mappedBy="filiere")
    private Collection<Groupes> groupes;
@@ -31,10 +31,10 @@ public Niveau getNiveau() {
 public void setNiveau(Niveau niveau) {
 	this.niveau = niveau;
 }
-public int getId() {
+public Long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getLibelle() {

@@ -9,15 +9,15 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Salle {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private String libelle;
    @ManyToOne
    @JoinColumn(name="CODE_EMP")
    private Emploie emploie;
-public int getId() {
+public Long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getLibelle() {

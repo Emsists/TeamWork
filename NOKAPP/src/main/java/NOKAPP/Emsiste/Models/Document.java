@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Document {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private Byte file;
    private String description;
    private Date dateCreation;
@@ -65,11 +65,11 @@ public void setAdmin(Admin admin) {
 }
 
 
-public int getId() {
+public Long getId() {
 	return id;
 }
 
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 

@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Emploie {
 	@Id @GeneratedValue
-   private int id;
+   private Long id;
    private String matiereEmp;
    private Date durre;
    private String salleEmp;
@@ -21,10 +21,10 @@ public class Emploie {
    @OneToOne
    @JoinColumn(name="CODE_EMP")
    private Groupes groupes;
-public int getId() {
+public Long getId() {
 	return id;
 }
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getMatiereEmp() {
