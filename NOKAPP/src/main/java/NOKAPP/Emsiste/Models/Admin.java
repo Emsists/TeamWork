@@ -4,13 +4,13 @@ import java.util.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 @Entity
 @DiscriminatorValue("ADM")
 public class Admin extends Personne {
+	private static final long serialVersionUID = -6761338706707291643L;
 	@OneToMany(mappedBy="admin")
    private Collection<Document> document;
 	@OneToMany(mappedBy="admin")

@@ -9,7 +9,7 @@ public class NokappApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NokappApplication.class, args);
 		System.out.println("*********************");
-		System.out.println("Ca marche !");
+		System.out.println("NOKAPP is working ...");
 	}
 
 }

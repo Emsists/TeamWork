@@ -1,22 +1,22 @@
-/***********************************************************************
- * Module:  Document.java
- * Author:  HP Omen
- * Purpose: Defines the Class Document
- ***********************************************************************/
 package NOKAPP.Emsiste.Models;
 
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 @Entity
-public class Document {
-	@Id @GeneratedValue
+public class Document implements Serializable {
+	private static final long serialVersionUID = -1574852764167470262L;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
+	@NotNull(message="this field is Required !")
    private Byte file;
    private String description;
    private Date dateCreation;
@@ -126,7 +126,7 @@ public CategoryDocument getCategoryDocument() {
 }
 
 public void setCategoryDocument(CategoryDocument scategoryDocument) {
-	this.categoryDocument = categoryDocument;
+	this.categoryDocument = scategoryDocument;
 }
 
 public Surveillant getSurveillant() {

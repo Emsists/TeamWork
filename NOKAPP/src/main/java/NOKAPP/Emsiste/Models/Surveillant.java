@@ -6,10 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 @Entity
 @DiscriminatorValue("SUR")
 public class Surveillant extends Personne {
-   private String fonctionSurveillant;
+	private static final long serialVersionUID = 7695148873583500953L;
+	@NotNull(message="this field is required!")
+private String fonctionSurveillant;
    @OneToMany(mappedBy="surveillant")
    private Collection<Document> document;
    @ManyToOne

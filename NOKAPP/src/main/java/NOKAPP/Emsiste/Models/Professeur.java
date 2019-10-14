@@ -4,10 +4,14 @@ import java.util.*;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 @Entity
 @DiscriminatorValue("PROF")
 public class Professeur extends Personne {
-   private String specialite;
+	private static final long serialVersionUID = -220605320754478697L;
+@NotNull(message="this field is Required !")
+private String specialite;
+@NotNull(message="this field is Required !")
    private String experience;
    @OneToMany(mappedBy="professeur")
    private Collection<Niveau> niveau;

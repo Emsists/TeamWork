@@ -5,10 +5,13 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 @Entity
 @DiscriminatorValue("ETU")
 public class Etudiant extends Personne {
-   private String matricule;
+	private static final long serialVersionUID = 1786503013506385557L;
+@NotNull
+private String matricule;
    @OneToMany(mappedBy="etudiant")
   private Collection<Document> document;
    @OneToMany(mappedBy="etudiant")

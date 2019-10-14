@@ -3,11 +3,14 @@ import java.util.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @DiscriminatorValue("TEC")
 public class Technicien extends Personne {
-   private String matricule;
+	private static final long serialVersionUID = 4288276306557511394L;
+@NotNull(message="this field is Required !")
+private String matricule;
 
 public String getMatricule() {
 	return matricule;

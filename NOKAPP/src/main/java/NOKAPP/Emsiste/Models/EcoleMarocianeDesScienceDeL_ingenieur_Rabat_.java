@@ -1,13 +1,14 @@
 package NOKAPP.Emsiste.Models;
-import java.util.*;
-
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 @Entity
-public class EcoleMarocianeDesScienceDeL_ingenieur_Rabat_ {
-	@Id @GeneratedValue
+public class EcoleMarocianeDesScienceDeL_ingenieur_Rabat_  implements Serializable{
+	private static final long serialVersionUID = 488995571716051682L;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
    private String departement;
    @OneToOne(mappedBy="EMSI")

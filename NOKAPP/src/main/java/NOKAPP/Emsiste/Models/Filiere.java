@@ -1,17 +1,22 @@
 package NOKAPP.Emsiste.Models;
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class Filiere {
-	@Id @GeneratedValue
+public class Filiere implements Serializable {
+	private static final long serialVersionUID = 7621737687696704452L;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
+	@NotNull(message="this field is required !")
    private String libelle;
    @OneToMany(mappedBy="filiere")
    private Collection<Groupes> groupes;

@@ -1,15 +1,21 @@
 package NOKAPP.Emsiste.Models;
-import java.util.*;
-
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 @Entity
-public class CategoryDocument {
-	@Id @GeneratedValue
+public class CategoryDocument implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2084559970653850653L;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
+	@NotNull(message="libelle is Empty")
    private String libelle;
    	@OneToOne
 	@JoinColumn(name="CODE_DOC")

@@ -1,20 +1,20 @@
-/***********************************************************************
- * Module:  Absence.java
- * Author:  HP Omen
- * Purpose: Defines the Class Absence
- ***********************************************************************/
 package NOKAPP.Emsiste.Models;
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 @Entity
-public class Absence {
-	@Id @GeneratedValue
+public class Absence implements Serializable {
+	private static final long serialVersionUID = 8443994949507325593L;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private int id;
+	@NotNull(message="Matiere is Empty !")
    private String matiere;
    private Date duree;
    @ManyToOne

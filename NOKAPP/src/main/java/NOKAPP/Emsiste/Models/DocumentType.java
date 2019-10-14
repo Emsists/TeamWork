@@ -1,19 +1,15 @@
-/***********************************************************************
- * Module:  DocumentType.java
- * Author:  HP Omen
- * Purpose: Defines the Class DocumentType
- ***********************************************************************/
 package NOKAPP.Emsiste.Models;
-import java.util.*;
-
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 @Entity
-public class DocumentType {
-	@Id @GeneratedValue
+public class DocumentType implements Serializable {
+	private static final long serialVersionUID = -7300555272407995930L;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
    private String libelle;
    @OneToOne

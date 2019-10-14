@@ -1,16 +1,21 @@
 package NOKAPP.Emsiste.Models;
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 @Entity
-public class Niveau {
-	@Id @GeneratedValue
+public class Niveau implements Serializable {
+	private static final long serialVersionUID = -4537839745727099828L;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
+	@NotNull(message="this field is Required!")
    private String libelle;
    @OneToOne
    @JoinColumn(name="C_PROF")

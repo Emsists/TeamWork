@@ -1,4 +1,5 @@
 package NOKAPP.Emsiste.Models;
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.DiscriminatorColumn;
@@ -9,25 +10,53 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_PER", discriminatorType=DiscriminatorType.STRING,length=3)
-public class Personne {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+public class Personne implements Serializable {
+	private static final long serialVersionUID = 8956243451L;
+
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
+	
+	@NotNull
+	@Size(min=3,max=50,message="Your Last Name Should be between 3 and 50 ...")
    private String lastName;
-   private String firstName;
+	@NotNull
+	@Size(min=3,max=50,message="Your first Name Should be between 3 and 50 ...")
+	private String firstName;
+	@NotNull(message="Not a Valid Mail ...")
+	@Email
    private String mail;
+	@NotNull(message="CIN Required")
    private String cin;
    private Byte picture;
+   @Pattern(regexp="(^$|[0-9]{10})")
+   @Size(min=10,max=10,message="this is not a Valid Phone Number")
    private String tel;
+   @NotNull
+	@Size(min=3,max=50,message="Your FatherFullName Should be between 3 and 50 ...")
    private String fatherFullName;
+   @NotNull
+	@Size(min=3,max=50,message="Your MotherFullName Should be between 3 and 50 ...")
    private String motherFullName;
+   @Pattern(regexp="(^$|[0-9]{10})")
+   @Size(min=10,max=10,message="this is not a Valid Phone Number")
    private String telPere;
    private Date dateNaissance;
+   @NotNull(message="please make sur you choose yout nationnality")
    private String nationnalite;
+   @NotNull(message=" Login is Empty !!")
    private String login;
+   @Pattern(regexp="(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$\r\n)")
    private String password;
+   
+   // we can also put some new technologies instead of using getters and setters we can use the framwork lombok who did these thing for us 
 public Long getId() {
 	return id;
 }
