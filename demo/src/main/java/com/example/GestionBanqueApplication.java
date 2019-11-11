@@ -30,7 +30,9 @@ public class GestionBanqueApplication implements CommandLineRunner {
 	@Autowired
 	private OperationRepository operationRepository;
 	@Autowired
-	private IBanqueService banqueService;
+	private IBanqueService banqueService;public GestionBanqueApplication() {
+		// TODO Auto-generated constructor stub
+	}
 	public static void main(String[] args) {
 		 SpringApplication.run(GestionBanqueApplication.class, args); //  soit declarer  le getbean ou bien faire un clientRepository  private avec autowired //ClientRepository clientRepository=ctx.getBean(ClientRepository.class);
 			System.out.println("*****************");

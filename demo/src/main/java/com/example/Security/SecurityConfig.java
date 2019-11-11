@@ -19,28 +19,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private DataSource datasource;
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	/*
-	 * @Bean public PasswordEncoder passwordEncoder() { return new
-	 * BCryptPasswordEncoder(); }
-	 * 
-	 */
+	  @Bean public BCryptPasswordEncoder getBCP() {
+		  return new BCryptPasswordEncoder(); }
+	  
+	 
 	
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
-		auth.inMemoryAuthentication().withUser("Naoufal").password("{noop}123456").roles("ADMIN","USER"); // creation d'un user qui a 2 role Admin et user 
-		auth.inMemoryAuthentication().withUser("user").password("{noop}0000").roles("USER");  // ici c est ath in memory qui veut dire des donnees statique et volatile
-		
+		BCryptPasswordEncoder bcp=getBCP();
+		System.out.println(bcp.encode("1111"));
 		/*
+		 * auth.inMemoryAuthentication().withUser("Naoufal").password("{noop}123456").
+		 * roles("ADMIN","USER"); // creation d'un user qui a 2 role Admin et user
+		 * auth.inMemoryAuthentication().withUser("user").password("{noop}0000").roles(
+		 * "USER"); // ici c est ath in memory qui veut dire des donnees statique et
+		 * volatile
+		 */
+		
+		
 		auth.jdbcAuthentication()
 		.dataSource(datasource)
 		.usersByUsernameQuery("select username as principal ,password as credentials , active from users where username=?")
 		.authoritiesByUsernameQuery("select username as principal , roles as role from users_roles where username=?")
 		.rolePrefix("ROLE_")
-		.passwordEncoder(passwordEncoder());//a changé seulement 
-		*/
+		.passwordEncoder(getBCP());//a changé seulement 
+		
 	}
 	
 	@Override
@@ -50,7 +57,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/operations","/consulterCompte").hasRole("USER");
 		http.authorizeRequests().antMatchers("/saveOperation").hasRole("ADMIN");
 		http.exceptionHandling().accessDeniedPage("/403");
-
 	}
 
 }

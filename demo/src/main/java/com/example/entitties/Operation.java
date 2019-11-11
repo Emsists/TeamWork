@@ -13,6 +13,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_OP",discriminatorType=DiscriminatorType.STRING,length=1)
@@ -43,6 +45,7 @@ public abstract class Operation implements Serializable
 	public void setMontant(double montant) {
 		this.montant = montant;
 	}
+	@JsonIgnore
 	public Compte getCompte() {
 		return compte;
 	}

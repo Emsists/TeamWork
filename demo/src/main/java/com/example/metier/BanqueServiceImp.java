@@ -27,9 +27,9 @@ public class BanqueServiceImp implements IBanqueService {
 	@Override
 	public Compte ConsulterCompte(String codeCpte) 
 	{
-		Optional<Compte> cpt= compteRepository.findById(codeCpte);
-		if(cpt==null) {throw new RuntimeException("Ce Compte Est Introuvable! Ressayer Une Autre fois ");}
-		return cpt.get();
+		Compte cpt=compteRepository.findById(codeCpte).get();
+		if(cpt==null) throw new RuntimeException("Ce Compte Est Introuvable ! ");
+		return cpt ;
 	}
 
 	@Override
